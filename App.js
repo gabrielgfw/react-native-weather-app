@@ -47,7 +47,7 @@ export default function App() {
 
     if(currentWeather) {
         const { main : { temp }} = currentWeather;
-        
+
         return (
             <View style={styles.container}>
                 <StatusBar style="auto" />
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
 
     container: {
         flex: 1,
-        backgroundColor: "#68bf7f",
+        backgroundColor: "#ffffff",
         alignItems: 'center',
         justifyContent: 'center',
         padding: 20,
