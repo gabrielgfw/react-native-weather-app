@@ -1,10 +1,19 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 
 export default function WeatherInfo({ currentWeather }) {
+    const { main: {temp} } = currentWeather;
+
     return (
-        <View>
-            <Text></Text>
+        <View style={styles.weatherInfo}>
+            <Text>{temp}</Text>
         </View>
-    )
+    );
 }
+
+
+const styles = StyleSheet.create({
+    weatherInfo: {
+        alignItems: "center",
+    },
+});
