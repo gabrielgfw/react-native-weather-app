@@ -44,18 +44,6 @@ const styles = StyleSheet.create({
         color: SIMPLE_TEXT_COLOR,
         fontSize: 30,
     },
-    /*
-    weatherText: {
-        color: '#ffffff',
-        fontSize: 25,
-        fontWeight: 'bold',
-    },
-    
-    weatherMainText: {
-        color: '#ffffff',
-        fontSize: 20,
-    },
-    */
 
     weatherDescText: {
         color: SIMPLE_TEXT_COLOR,
