@@ -2,8 +2,6 @@ import React from 'react'
 import { View, Text, StyleSheet, Image } from 'react-native'
 import { colors } from '../utils/index'
 
-const { PRIMARY_COLOR, SECONDARY_COLOR, SIMPLE_TEXT_COLOR } = colors;
-
 export default function WeatherInfo({ currentWeather }) {
     const { 
         main: { temp },
@@ -17,50 +15,67 @@ export default function WeatherInfo({ currentWeather }) {
     return (
         <View style={styles.weatherInfo}>
 
-            <Text style={styles.cityText}> {name} </Text>
-
-            <Image style={styles.weatherIcon} source={{ uri: iconUrl }}></Image>
-
-            <Text style={styles.textPrimary}> {temp.toFixed(1)}° </Text>
-            <Text style={styles.weatherDescText}> {description} </Text>
-            <Text style={styles.textSecondary}> {main} </Text>   
+            <View style={styles.viewInfo}>
+                <Text style={styles.cityName}> {name} </Text>
+                <Text style={styles.weatherDescText}> {description} </Text>
+                <Text style={styles.secondaryText}> {main} </Text> 
+            </View>
             
+            <View style={styles.viewTemp}>
+                <Image style={styles.weatherIcon} source={{ uri: iconUrl }}></Image>
+                <Text style={styles.tempValueText}> {temp.toFixed(1)}° </Text>
+            </View>
+              
         </View>
     );
 }
 
-
 const styles = StyleSheet.create({
-    weatherInfo: {
-        alignItems: "center",
+    viewInfo: {
+        padding: 20,
     },
-
+    weatherInfo: {
+        alignItems: "flex-start",
+        paddingBottom: 20,
+    },
+    viewTemp: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
     weatherIcon: {
         width: 100,
         height: 100,        
     },
-
-    cityText: {
-        color: SIMPLE_TEXT_COLOR,
-        fontSize: 30,
+    cityName: {
+        color: colors.STRONG_COLOR,
+        fontSize: 25,
+        fontWeight: 'bold',
+        padding: 20,
+        paddingTop: 5,
+        paddingLeft: 0,
+        paddingBottom: 0,
     },
-
     weatherDescText: {
-        color: SIMPLE_TEXT_COLOR,
+        color: colors.SIMPLE_TEXT_COLOR,
         fontSize: 20,
         textTransform: 'capitalize',
+        padding: 10,
+        paddingBottom: 5,
+        paddingTop: 5,
+        paddingLeft: 0,
     },
-
-
-    textPrimary: {
+    tempValueText: {
         fontSize: 40,
-        color: PRIMARY_COLOR,
+        color: colors.PRIMARY_COLOR,
     },
-
-    textSecondary: {
+    secondaryText: {
         fontSize: 20,
-        color: SECONDARY_COLOR,
+        color: colors.SECONDARY_COLOR,
         fontWeight: 'bold',
-        marginTop: 10,
+        padding: 10,
+        paddingTop: 0,
+        paddingBottom: 20,
+        paddingLeft: 0,
     },
 });
