@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
         */
         height: 20,
         width: 90,
-        paddingBottom: 50,        
+        paddingBottom: 50,      
     },
 });
 

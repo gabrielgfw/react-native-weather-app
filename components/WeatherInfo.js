@@ -33,6 +33,7 @@ export default function WeatherInfo({ currentWeather }) {
 const styles = StyleSheet.create({
     viewInfo: {
         padding: 20,
+        paddingBottom: 0,
     },
     weatherInfo: {
         alignItems: "flex-start",
@@ -75,7 +76,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         padding: 10,
         paddingTop: 0,
-        paddingBottom: 20,
         paddingLeft: 0,
     },
 });

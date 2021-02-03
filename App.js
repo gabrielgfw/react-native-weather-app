@@ -57,13 +57,13 @@ export default function App() {
                 <View style={styles.main}>
                     <View style={styles.contentContainer}>
 
-                        <View>
+                        <View style={styles.weatherContainer}>
                             <WeatherInfo currentWeather={currentWeather}/>
                         </View>
 
                         <View style={styles.actionPainel}>
                             <UnitsPicker unitsSystem={unitsSystem} setUnitsSystem={setUnitsSystem}/>
-                            <ReloadIcon/>
+                            <ReloadIcon load={load}/>
                         </View>
 
 
@@ -108,12 +108,18 @@ const styles = StyleSheet.create({
     },
     actionPainel: {
         flexDirection: 'column',
+        alignContent: 'space-between',
+        justifyContent: 'space-between',
         padding: 20,
+        paddingBottom: 30,
     },
     contentContainer: {
         borderRadius: 25,
         flexDirection: 'row',
         backgroundColor: '#bdc9c1',
-    }
-
+        height: 250,
+    },
+    weatherContainer: {
+        paddingTop: 5,
+    },
 });
