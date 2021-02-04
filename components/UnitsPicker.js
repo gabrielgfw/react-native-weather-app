@@ -1,15 +1,17 @@
 import React from 'react'
 import { View, StyleSheet, Platform } from 'react-native'
 import { Picker } from '@react-native-community/picker'
+import { colors } from '../utils';
 
 export default function UnitsPicker({ unitsSystem, setUnitsSystem }) {
     return (
-        <View>
+        <View style={styles.pickerContainer}>
             <Picker
-                style={styles.pickerStyle} 
+                style={styles.pickerStyle}
                 selectedValue={unitsSystem} 
                 onValueChange={ (item) => setUnitsSystem(item)}
-                mode="dropdown">
+                mode="dropdown"
+                >
                 <Picker.Item label="C°" value="metric"/>
                 <Picker.Item label="F°" value="imperial"/>
             </Picker>
@@ -18,20 +20,19 @@ export default function UnitsPicker({ unitsSystem, setUnitsSystem }) {
 }
 
 const styles = StyleSheet.create({
-    pickerStyle: {
-        /* 
-        ...Platform.select({
-            ios: {
-                top: -20,
-            },
-            android: {
-                top: 25,
-            },
-        }),
-        */
-        height: 20,
+    pickercontainer: {
+        paddingRight: 20,
+    },
+    
+    pickerStyle: { 
+        transform: [
+            { scaleX: 1.5 },
+            { scaleY: 1.5 },
+        ],
         width: 90,
-        paddingBottom: 50,      
+        color: colors.PRIMARY_COLOR,
+        borderRadius: 30,
+        paddingRight: 15,
     },
 });
 

@@ -4,4 +4,5 @@ export const colors = {
     SIMPLE_TEXT_COLOR: '#343434',
     BORDER_COLOR: '#dbdbdb',
     STRONG_COLOR: '#da4f5e',
+    COOLER_COLOR: '#236da7',
 };
