@@ -1,15 +1,17 @@
 import { StatusBar } from 'expo-status-bar';
 import React, {useEffect, useState} from 'react';
-import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator, Dimensions } from 'react-native';
 import * as Location from 'expo-location';
 import WeatherInfo from './components/WeatherInfo';
 import UnitsPicker from './components/UnitsPicker';
 import ReloadIcon from './components/ReloadIcon';
 import { colors } from './utils/index';
 import WeatherDetails from './components/WeatherDetails';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const WEATHER_API_KEY = "c1e4b5d8893a59e7de3fcb6795cd80b0";
 const BASE_WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather?"
+const VIEW_HEIGHT = Dimensions.get("window").height;
 
 export default function App() {
     const [errorMessage, setErrorMessage] = useState(null);
@@ -54,6 +56,12 @@ export default function App() {
     if(currentWeather) {
         return (
             <View style={styles.container}>
+                <LinearGradient
+                // Button Linear Gradient
+                colors={['rgba(65,220,136,1)', 'rgba(72,195,141,1)']}
+                style={styles.background}>
+
+                </LinearGradient>
                 <StatusBar hidden />
                 <View style={styles.main}>
                     <View style={styles.contentContainer}>
@@ -72,7 +80,7 @@ export default function App() {
             </View>
         );
 
-    } else if (errorMessage){
+    } else if (errorMessage) {
         return (
             <View style={styles.container}>
                 <Text style={styles.text}>{errorMessage}</Text>
@@ -97,7 +105,14 @@ const styles = StyleSheet.create({
         paddingTop: 40,
         alignContent: 'center',
         justifyContent: 'center',
-        backgroundColor: '#b3c2b8',
+        backgroundColor: '#ffffff',
+    },
+    background: {
+        position: 'absolute',
+        left: 0,
+        right: 0,
+        top: 0,
+        height: VIEW_HEIGHT,
     },
     text: {
         color: '#252525',
@@ -115,21 +130,11 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     contentContainer: {
-        height: 250,
-        borderRadius: 25,
+        opacity: 0.9,
+        height: 215,
+        borderRadius: 10,
         flexDirection: 'row',
-        backgroundColor: '#bdc9c1',
-        borderTopWidth: 1,
-        borderLeftWidth: 1,
-        borderColor: '#efefef',
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 0,
-        },
-        shadowOpacity: 0.16,
-        shadowRadius: 16,
-        elevation: 11,
+        backgroundColor: 'rgba(101,198,137,1)',
     },
     weatherContainer: {
         paddingTop: 5,

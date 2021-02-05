@@ -25,17 +25,14 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         height: 60,
         width: 60,
-        backgroundColor: '#d0d7d2',
-        borderTopWidth: 1,
-        borderLeftWidth: 1,
-        borderColor: '#efefef',
+        backgroundColor: 'rgba(101,198,145,1)',
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
-            height: 0,
+            height: 12,
         },
-        shadowOpacity: 0.46,
-        shadowRadius: 0,
-        elevation: 15,
+        shadowOpacity: 0.58,
+        shadowRadius: 16.00,
+        elevation: 24,
     }
 });

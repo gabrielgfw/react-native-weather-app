@@ -5,18 +5,29 @@ import { FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons'
 
 export default function WeatherDetails({ currentWeather }) {
     const {
-        main: {feels_like, humidity}
+        main: { feels_like, humidity }
     } = currentWeather;
 
     return (
         <View style={styles.weatherDetails}>
             <View style={styles.weatherDetailsRow}>
-                <View style={styles.weatherDetailsBox}>
-                    <FontAwesome5 name="temperature-low" size={25} color={colors.COOLER_COLOR}/>
-                    <Text style={styles.weatherDetailsText}>{ feels_like }</Text>
+                <View style={styles.weatherDetailsBox} blurRadius={1}>
+                    <View style={styles.iconBox}>
+                        <FontAwesome5 style={styles.iconStyle} name="temperature-high" size={30} color={colors.STRONG_COLOR}/>
+                    </View>
+                    <View style={styles.textBox}>
+                        <Text style={styles.titleText}>Feels Like</Text>
+                        <Text style={styles.valueText}>    { feels_like.toFixed(0) }°</Text>
+                    </View>
                 </View>
                 <View style={styles.weatherDetailsBox}>
-                    <Text style={styles.weatherDetailsText}>{ humidity }</Text>
+                    <View style={styles.iconBox}>
+                        <MaterialCommunityIcons style={styles.iconStyle} name="water" size={35} color={colors.STRONG_COLOR}/> 
+                    </View>
+                    <View style={styles.textBox}>
+                        <Text style={styles.titleText}>Humidity</Text>
+                        <Text style={styles.valueText}>   { humidity }%</Text>
+                    </View>
                 </View>
             </View>
         </View>
@@ -26,39 +37,56 @@ export default function WeatherDetails({ currentWeather }) {
 const styles = StyleSheet.create({
     weatherDetails: {
         marginTop: 'auto',
+        alignContent: 'center',
+        justifyContent: 'center',
     },
     weatherDetailsRow: {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
         padding: 10,
-        paddingBottom: 30,
+        paddingBottom: 10,
     },
     weatherDetailsBox: {
         flexDirection: 'row',
         justifyContent: 'center',
         alignContent: 'center',
-        borderStyle: 'solid',
-        padding: 20,
+        padding: 5,
         borderRadius: 10,
-        backgroundColor: '#bdc9c1',
-        width: 150,
-        borderTopWidth: 1,
-        borderLeftWidth: 1,
-        borderColor: '#efefef',
+        backgroundColor: 'rgba(86,219,147,1)',
+        width: 130,
+        height: 70,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
-            height: 0,
+            height: 9,
         },
-        shadowOpacity: 0.46,
-        shadowRadius: 0,
-        elevation: 15,
+        shadowOpacity: 0.48,
+        shadowRadius: 11.95,
+
+        elevation: 18,
     },
-    weatherDetailsText: {
-        fontSize: 22,
+    textBox: {
+        padding: 2,
+        paddingLeft: 5,
+        justifyContent: 'center',
+        alignContent: 'center',
+    },
+    valueText: {
         fontWeight: 'bold',
         color: colors.PRIMARY_COLOR,
-        paddingLeft: 20,
+        fontSize: 20,
+    },
+    titleText: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: 'rgba(36,71,90,1)',
+    },
+    iconBox: {
+        justifyContent: 'center',
+        alignContent: 'center',
+    },
+    iconStyle: {
+        padding: 5,
     }
 });

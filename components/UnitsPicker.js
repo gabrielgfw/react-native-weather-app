@@ -10,6 +10,7 @@ export default function UnitsPicker({ unitsSystem, setUnitsSystem }) {
                 style={styles.pickerStyle}
                 selectedValue={unitsSystem} 
                 onValueChange={ (item) => setUnitsSystem(item)}
+                itemStyle={{ backgroundColor: "#d3d3d3" }}
                 mode="dropdown"
                 >
                 <Picker.Item label="C°" value="metric"/>
@@ -21,18 +22,20 @@ export default function UnitsPicker({ unitsSystem, setUnitsSystem }) {
 
 const styles = StyleSheet.create({
     pickercontainer: {
-        paddingRight: 20,
+        paddingRight: 25,
     },
     
     pickerStyle: { 
         transform: [
-            { scaleX: 1.5 },
-            { scaleY: 1.5 },
+            { scaleX: 1.3 },
+            { scaleY: 1.3 },
         ],
         width: 90,
+        marginLeft: -40,
+        height: 55,
         color: colors.PRIMARY_COLOR,
         borderRadius: 30,
-        paddingRight: 15,
+        paddingRight: 0,
     },
 });
 

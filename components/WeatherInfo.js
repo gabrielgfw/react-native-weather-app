@@ -17,8 +17,7 @@ export default function WeatherInfo({ currentWeather }) {
 
             <View style={styles.viewInfo}>
                 <Text style={styles.cityName}> {name} </Text>
-                <Text style={styles.weatherDescText}> {description} </Text>
-                <Text style={styles.secondaryText}> {main} </Text> 
+                <Text style={styles.secondaryText}> {description} </Text>
             </View>
             
             <View style={styles.viewTemp}>
@@ -45,11 +44,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     weatherIcon: {
-        width: 100,
-        height: 100,        
+        width: 105,
+        height: 105,        
     },
     cityName: {
-        color: colors.STRONG_COLOR,
+        // color: colors.PRIMARY_COLOR,
+        color: 'rgba(17,109,162,1)',
         fontSize: 25,
         fontWeight: 'bold',
         padding: 20,
@@ -57,23 +57,16 @@ const styles = StyleSheet.create({
         paddingLeft: 0,
         paddingBottom: 0,
     },
-    weatherDescText: {
-        color: colors.SIMPLE_TEXT_COLOR,
-        fontSize: 20,
-        textTransform: 'capitalize',
-        padding: 10,
-        paddingBottom: 5,
-        paddingTop: 5,
-        paddingLeft: 0,
-    },
     tempValueText: {
-        fontSize: 40,
+        fontSize: 35,
+        fontWeight: 'bold',
         color: colors.PRIMARY_COLOR,
     },
     secondaryText: {
-        fontSize: 20,
-        color: colors.SECONDARY_COLOR,
+        fontSize: 22,
+        color: 'rgba(36,71,90,1)',
         fontWeight: 'bold',
+        textTransform: 'capitalize',
         padding: 10,
         paddingTop: 0,
         paddingLeft: 0,
