@@ -3,10 +3,13 @@ import { View, Text, StyleSheet } from 'react-native'
 import { colors } from '../utils/index'
 import { FontAwesome5, MaterialCommunityIcons } from '@expo/vector-icons'
 
-export default function WeatherDetails({ currentWeather }) {
+export default function WeatherDetails({ currentWeather, unitsSystem }) {
     const {
-        main: { feels_like, humidity }
+        main: { feels_like, humidity, pressure },
+        wind: { speed },
     } = currentWeather;
+
+    const windSpeed = unitsSystem === 'metric' ? `${Math.round(speed)} m/s` : `${Math.round(speed)} miles/h`
 
     return (
         <View style={styles.weatherDetails}>
@@ -30,6 +33,29 @@ export default function WeatherDetails({ currentWeather }) {
                     </View>
                 </View>
             </View>
+
+            <View style={styles.weatherDetailsRow}>
+                <View style={styles.weatherDetailsBox} blurRadius={1}>
+                    <View style={styles.iconBox}>
+                        <MaterialCommunityIcons style={styles.iconStyle} name="weather-windy" size={30} color={colors.STRONG_COLOR}/>
+                    </View>
+                    <View style={styles.textBox}>
+                        <Text style={styles.titleText}>Wind Speed</Text>
+                        <Text style={styles.valueText}>{ windSpeed }</Text>
+                    </View>
+                </View>
+                <View style={styles.weatherDetailsBox} blurRadius={1}>
+                    <View style={styles.iconBox}>
+                        <MaterialCommunityIcons style={styles.iconStyle} name="speedometer" size={30} color={colors.STRONG_COLOR}/>
+                    </View>
+                    <View style={styles.textBox}>
+                        <Text style={styles.titleText}>Pressure</Text>
+                        <Text style={styles.valueText}>{ pressure } hPa</Text>
+                    </View>
+                </View>
+            </View>
+
+
         </View>
     )
 }
@@ -44,8 +70,8 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: 10,
-        paddingBottom: 10,
+        padding: 5,
+        paddingBottom: 25,
     },
     weatherDetailsBox: {
         flexDirection: 'row',
@@ -54,7 +80,7 @@ const styles = StyleSheet.create({
         padding: 5,
         borderRadius: 10,
         backgroundColor: 'rgba(86,219,147,1)',
-        width: 130,
+        width: 150,
         height: 70,
         shadowColor: "#000",
         shadowOffset: {
@@ -68,6 +94,7 @@ const styles = StyleSheet.create({
     },
     textBox: {
         padding: 2,
+        paddingRight: 5,
         paddingLeft: 5,
         justifyContent: 'center',
         alignContent: 'center',
@@ -75,7 +102,7 @@ const styles = StyleSheet.create({
     valueText: {
         fontWeight: 'bold',
         color: colors.PRIMARY_COLOR,
-        fontSize: 20,
+        fontSize: 18,
     },
     titleText: {
         fontSize: 16,
